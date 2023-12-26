@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         else if(Input.GetButtonDown("Jump")&& doublej==0 && IsGrounded() )
             {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
         }
 
         UpdateAnimationState();       
@@ -86,11 +87,13 @@ public class PlayerMovement : MonoBehaviour
         if (rb.velocity.y > .1f)
         {
             state = MovementState.jumping;
+            
         }
         else if (rb.velocity.y < -.1f)
         {
             state = MovementState.falling;
         }
+       
 
         anim.SetInteger("state", (int)state);
     }
