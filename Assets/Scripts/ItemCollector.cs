@@ -20,9 +20,17 @@ public class ItemCollector : MonoBehaviour
             bananas++;
             bananasText.text = "Bananas: " + bananas;
         }
+       
+    }
+    public void Update()
+    {
         if (bananas >= 3)
         {
             colectbananas = true;
+        }
+        else if (bananas <= 3)
+        {
+            colectbananas = false;
         }
     }
 }

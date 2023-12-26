@@ -37,9 +37,13 @@ public class PlayerMovement : MonoBehaviour
         if (ItemCollector.colectbananas == true)
         {
             doublejvalue = 1;
+        }else if (ItemCollector.colectbananas == false)
+        {
+            doublejvalue = 0;
+            
         }
            
-
+        
 
         if (IsGrounded() == true)
         {
