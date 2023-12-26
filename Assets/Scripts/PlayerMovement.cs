@@ -38,7 +38,12 @@ public class PlayerMovement : MonoBehaviour
         {
             doublejvalue = 1;
         }
-           
+        else if (ItemCollector.colectbananas == false)
+        {
+            doublejvalue = 0;
+
+        }
+
 
 
         if (IsGrounded() == true)
