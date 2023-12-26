@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ItemCollector : MonoBehaviour
 {
     private int bananas = 0;
+    public static bool colectbananas=false;
 
     [SerializeField] private Text bananasText;
     [SerializeField] private AudioSource banasAudioSource;
@@ -18,6 +19,10 @@ public class ItemCollector : MonoBehaviour
             Destroy(collision.gameObject);
             bananas++;
             bananasText.text = "Bananas: " + bananas;
+        }
+        if (bananas >= 3)
+        {
+            colectbananas = true;
         }
     }
 }

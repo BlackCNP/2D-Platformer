@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D coll;
     private SpriteRenderer sprite;
     private Animator anim;
+    private int doublej;
+    public int doublejvalue;
 
     [SerializeField] private LayerMask jumpableGround;
 
@@ -20,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        doublej = doublejvalue;
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -31,10 +34,26 @@ public class PlayerMovement : MonoBehaviour
     {
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+        if (ItemCollector.colectbananas == true)
+        {
+            doublejvalue = 1;
+        }
+           
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+
+        if (IsGrounded() == true)
+        {
+            doublej = doublejvalue;
+        }
+
+        if (Input.GetButtonDown("Jump")  && doublej>0)
         {
             jumpsound.Play();
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            doublej--;
+        }
+        else if(Input.GetButtonDown("Jump")&& doublej==0 && IsGrounded() )
+            {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
